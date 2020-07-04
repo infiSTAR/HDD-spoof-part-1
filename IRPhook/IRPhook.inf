@@ -1,5 +1,5 @@
 ;
-; IRPhookHDDspoof.inf
+; IRPhook.inf
 ;
 
 [Version]
@@ -7,13 +7,13 @@ Signature="$WINDOWS NT$"
 Class=Sample ; TODO: edit Class
 ClassGuid={78A1C341-4539-11d3-B88D-00C04FAD5171} ; TODO: edit ClassGuid
 Provider=%ManufacturerName%
-CatalogFile=IRPhookHDDspoof.cat
+CatalogFile=IRPhook.cat
 DriverVer= ; TODO: set DriverVer in stampinf property pages
 PnpLockDown=1
 
 [DestinationDirs]
 DefaultDestDir = 12
-IRPhookHDDspoof_Device_CoInstaller_CopyFiles = 11
+IRPhook_Device_CoInstaller_CopyFiles = 11
 
 ; ================= Class section =====================
 
@@ -28,7 +28,7 @@ HKR,,Icon,,-5
 1 = %DiskName%,,,""
 
 [SourceDisksFiles]
-IRPhookHDDspoof.sys  = 1,,
+IRPhook.sys  = 1,,
 WdfCoInstaller$KMDFCOINSTALLERVERSION$.dll=1 ; make sure the number matches with SourceDisksNames
 
 ;*****************************************
@@ -39,49 +39,49 @@ WdfCoInstaller$KMDFCOINSTALLERVERSION$.dll=1 ; make sure the number matches with
 %ManufacturerName%=Standard,NT$ARCH$
 
 [Standard.NT$ARCH$]
-%IRPhookHDDspoof.DeviceDesc%=IRPhookHDDspoof_Device, Root\IRPhookHDDspoof ; TODO: edit hw-id
+%IRPhook.DeviceDesc%=IRPhook_Device, Root\IRPhook ; TODO: edit hw-id
 
-[IRPhookHDDspoof_Device.NT]
+[IRPhook_Device.NT]
 CopyFiles=Drivers_Dir
 
 [Drivers_Dir]
-IRPhookHDDspoof.sys
+IRPhook.sys
 
 ;-------------- Service installation
-[IRPhookHDDspoof_Device.NT.Services]
-AddService = IRPhookHDDspoof,%SPSVCINST_ASSOCSERVICE%, IRPhookHDDspoof_Service_Inst
+[IRPhook_Device.NT.Services]
+AddService = IRPhook,%SPSVCINST_ASSOCSERVICE%, IRPhook_Service_Inst
 
-; -------------- IRPhookHDDspoof driver install sections
-[IRPhookHDDspoof_Service_Inst]
-DisplayName    = %IRPhookHDDspoof.SVCDESC%
+; -------------- IRPhook driver install sections
+[IRPhook_Service_Inst]
+DisplayName    = %IRPhook.SVCDESC%
 ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
 StartType      = 3               ; SERVICE_DEMAND_START
 ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
-ServiceBinary  = %12%\IRPhookHDDspoof.sys
+ServiceBinary  = %12%\IRPhook.sys
 
 ;
-;--- IRPhookHDDspoof_Device Coinstaller installation ------
+;--- IRPhook_Device Coinstaller installation ------
 ;
 
-[IRPhookHDDspoof_Device.NT.CoInstallers]
-AddReg=IRPhookHDDspoof_Device_CoInstaller_AddReg
-CopyFiles=IRPhookHDDspoof_Device_CoInstaller_CopyFiles
+[IRPhook_Device.NT.CoInstallers]
+AddReg=IRPhook_Device_CoInstaller_AddReg
+CopyFiles=IRPhook_Device_CoInstaller_CopyFiles
 
-[IRPhookHDDspoof_Device_CoInstaller_AddReg]
+[IRPhook_Device_CoInstaller_AddReg]
 HKR,,CoInstallers32,0x00010000, "WdfCoInstaller$KMDFCOINSTALLERVERSION$.dll,WdfCoInstaller"
 
-[IRPhookHDDspoof_Device_CoInstaller_CopyFiles]
+[IRPhook_Device_CoInstaller_CopyFiles]
 WdfCoInstaller$KMDFCOINSTALLERVERSION$.dll
 
-[IRPhookHDDspoof_Device.NT.Wdf]
-KmdfService =  IRPhookHDDspoof, IRPhookHDDspoof_wdfsect
-[IRPhookHDDspoof_wdfsect]
+[IRPhook_Device.NT.Wdf]
+KmdfService =  IRPhook, IRPhook_wdfsect
+[IRPhook_wdfsect]
 KmdfLibraryVersion = $KMDFVERSION$
 
 [Strings]
 SPSVCINST_ASSOCSERVICE= 0x00000002
 ManufacturerName="<Your manufacturer name>" ;TODO: Replace with your manufacturer name
 ClassName="Samples" ; TODO: edit ClassName
-DiskName = "IRPhookHDDspoof Installation Disk"
-IRPhookHDDspoof.DeviceDesc = "IRPhookHDDspoof Device"
-IRPhookHDDspoof.SVCDESC = "IRPhookHDDspoof Service"
+DiskName = "IRPhook Installation Disk"
+IRPhook.DeviceDesc = "IRPhook Device"
+IRPhook.SVCDESC = "IRPhook Service"

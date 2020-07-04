@@ -6,34 +6,12 @@
 PVOID64 SwapPointer(PVOID* ptr1, PVOID* ptr2)
 {
 
-	if (MmIsAddressValid(*ptr1) && MmIsAddressValid(*ptr2))
-	{
-		KIRQL   tempirql = KeRaiseIrqlToDpcLevel();
 
-		ULONG64  cr0 = __readcr0();
-
-		cr0 &= 0xfffffffffffeffff;
-
-		__writecr0(cr0);
-
-		_disable();
 
 		PVOID64 old = *ptr1;
 		*ptr1 = *ptr2;
 		*ptr2 = old;
 		return old;
-
-		cr0 = __readcr0();
-
-		cr0 |= 0x10000;
-
-		_enable();
-
-		__writecr0(cr0);
-
-		KeLowerIrql(tempirql);
-	}
-	return TRUE;
 }
 
 

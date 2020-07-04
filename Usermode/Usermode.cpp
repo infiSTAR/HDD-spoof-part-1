@@ -1,10 +1,11 @@
-// get_serial_number.cpp : This file contains the 'main' function. Program execution begins and ends there.
+// Us// get_serial_number.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
 #include <iostream>
 #include <Windows.h>
 
 using namespace std;
+
 
 int main()
 {
@@ -39,11 +40,11 @@ int main()
 
     cout << "serial number offset is: " << pDeviceDescriptor->SerialNumberOffset << endl;
     cout << "your serial number is:" << pOutBuffer + pDeviceDescriptor->SerialNumberOffset << endl;
-
     int a;
     while (1)
     {
-        std::cout << "enter 1 to exit: \n" << endl;
+
+        std::cout << "enter 1 to exit, : \n" << endl;
         std::cin >> a;
         if (a == 1)
         {

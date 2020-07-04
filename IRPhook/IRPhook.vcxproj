@@ -35,13 +35,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{93EEE91D-1AF1-4773-A28E-F485C5BAD933}</ProjectGuid>
+    <ProjectGuid>{148A4910-68AF-43F1-AC1E-86C50884245B}</ProjectGuid>
     <TemplateGuid>{1bc93793-694f-48fe-9372-81e2b05556fd}</TemplateGuid>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
     <Configuration>Debug</Configuration>
     <Platform Condition="'$(Platform)' == ''">Win32</Platform>
-    <RootNamespace>IRPhookHDDspoof</RootNamespace>
+    <RootNamespace>IRPhook</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -142,29 +142,26 @@
     <DebuggerFlavor>DbgengKernelDebugger</DebuggerFlavor>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+    </ClCompile>
     <Link>
       <EntryPointSymbol>RealDriverEntry</EntryPointSymbol>
     </Link>
-    <ClCompile>
-      <TreatWarningAsError>false</TreatWarningAsError>
-    </ClCompile>
-    <ClCompile>
-      <BufferSecurityCheck>false</BufferSecurityCheck>
-      <Optimization>Full</Optimization>
-    </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <Inf Include="IRPhookHDDspoof.inf" />
+    <Inf Include="IRPhook.inf" />
   </ItemGroup>
   <ItemGroup>
     <FilesToPackage Include="$(TargetPath)" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="driver.c" />
+    <ClCompile Include="Driver.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Undocumented.h" />
-    <ClInclude Include="utilityFuncs.h" />
+    <ClInclude Include="utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

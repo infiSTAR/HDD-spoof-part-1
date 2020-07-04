@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{725dfbe5-dced-4928-b28f-8f5eaefde9e7}</ProjectGuid>
-    <RootNamespace>getHDDserial</RootNamespace>
+    <ProjectGuid>{ec57a2e3-2a3e-4889-904b-d42681410cad}</ProjectGuid>
+    <RootNamespace>Usermode</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -139,7 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="getHDDserial.cpp" />
+    <ClCompile Include="Usermode.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
